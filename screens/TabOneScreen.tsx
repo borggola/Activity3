@@ -1,99 +1,112 @@
-import { Image, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { Image, StyleSheet, TextInput } from 'react-native';
+import { Button } from "react-native-elements";
+
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
+import ViewWithLoading from "../components/ViewWithLoading";
+import LottieView from 'lottie-react-native'
+import HeaderLottie from './HeaderLottie';
+import Footerlogin from './Footerlogin';
+import FooterForgotpass from './FooterForgotpass';
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+export default function TabOneScreen() {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  setTimeout(() => {
+    setLoading(false);
+    
+  }, 3000);
+
   return (
-    <View style={{
+
+    <ViewWithLoading loading={false}>
+
+      
+      <HeaderLottie/>
+      <View style={{
       flex: 1,
       backgroundColor: '#FFFFFF',
       borderWidth: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      flexDirection: 'column',
+     flexDirection: 'column'
 
       
     }}>
-    <View style={{
-      height: '10%',
-      width: '80%',
-      backgroundColor: '#43BFC7',
-      borderWidth:1,
-      borderRadius: 25,
-      
-    }}>
-      <Text style={{
-      margin: 15,
-      }}>Username
-      </Text>
-
-    </View>
-    <View style={{
-      height: '5%',
+      <View style ={{
+        height: '10%',
+        width: '80%',
+        borderWidth:1,
+        borderRadius: 25,
+        padding: 10,
+        backgroundColor:'white'
+        }}>
+      <TextInput
+        placeholder="Email"
+        />
+        </View>
+        <View style={{
+      height: '2%',
       width: '30%',
       backgroundColor: '#FFFFFFC0',
     }}>
     </View>
-    <View style={{
-      height: '10%',
-      width: '80%',
-      backgroundColor: '#43BFC7',
-      borderWidth: 1,
-      borderRadius: 25
-    }}>
-      <Text style={{
-      margin: 15,
-      }}>Password                                              View
-      </Text>
-    </View>
-    <View style={{
-      height: '5%',
-      width: '80%',
+        <View style ={{
+        height: '10%',
+        width: '80%',
+        padding: 10,
+        borderWidth:1,
+        borderRadius: 25,
+        backgroundColor:'white'
+        }}>
+      <TextInput
+        placeholder="Password"
+        secureTextEntry={true}
+        />
+        </View>
+        <View style={{
+      height: '2%',
+      width: '30%',
       backgroundColor: '#FFFFFFC0',
     }}>
-       <Text style={{
-        color: 'blue',
-        textDecorationLine: 'underline'
-      }}>Forgot Password?
-      </Text>
     </View>
-    <View style={{
-      height: '10%',
-      width: '30%',
-      backgroundColor: '#43BFC7',
-      borderRadius: 25
-    }}>
-      <Text style={{
-        color: 'black',
-      margin: 20,
-      textAlign: 'center'
-      }}>Login
-      </Text>
-    </View>
+        <View style ={{
+        height: '15%',
+        width: '30%',
+        padding: 10,
+
+        backgroundColor:'white'
+        }}>
+      <Button
+      title={"Login"}
+
+      />
+
+        </View>
+        <Footerlogin
+        />
+      
     <Text style={{
         color: 'black',
       margin: 20,
       textAlign: 'center'
       }}>--------------------------------------or--------------------------------------
       </Text>
-      <View style={{
-      height: '5%',
-      width: '30%',
-      backgroundColor: '#FFFFFFC0',
-    }}>
-    </View>
+     
     <View style={{
       height: '10%',
-      width: '30%',
+      width: '20%',
       backgroundColor: 'white',
+      justifyContent: 'space-evenly',
       borderWidth:1,
       borderRadius: 25,
     }}>
        <Image  source={{uri: 'https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-facebook-icon-png-images-icons-and-png-backgrounds-1.png'}}
        style = {{
-         height: '80%',
+         height: '90%',
          width: '100%',
          resizeMode: "contain"
        }}
@@ -107,9 +120,9 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
       
       <View style={{
       height: '10%',
-      width: '30%',
+      width: '20%',
       backgroundColor: 'white',
-      borderWidth:1,
+      borderWidth: 1,
       borderRadius: 25,
     }}>
        <Image
@@ -117,9 +130,9 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
        style = {{
          height: '75%',
          width: '100%',
+         margin: 3,
          resizeMode: "contain"
        }}
-       
        />
     </View>
     <Text style={{
@@ -128,5 +141,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
       }}> Continue With Google
       </Text>
     </View>
+    </ViewWithLoading>
   );
 }
+    
